@@ -5,4 +5,10 @@ import { Component } from "@angular/core";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {}
+export class AppComponent {
+  public counter: number = 0;
+
+  public increment(event: any, incrementor: number): void {
+    this.counter += incrementor;
+  }
+}
