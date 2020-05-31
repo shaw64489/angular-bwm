@@ -1,4 +1,14 @@
-<h1>I am listing component!</h1>
-<div *ngFor="let rental of rentals">
-  {{ rental.title }}
+<div class="bwm-list-page">
+  <h1 class="title">Your Home all around the World</h1>
+  <!-- TODO: Create custom directive in end of section -->
+  <div class="row">
+    <div *ngFor="let rental of rentals" class="col-md-3 col-xs-12">
+      <!-- Property binding to pass rental property - one way data binding-->
+      <!-- Two way data binding - [(childData)]-->
+      <bwm-rental-card [rentalItem]="rental"></bwm-rental-card>
+      <!-- <div *bwmNgIf="rental.category === 'house'">
+        <h1>I am a house</h1>
+      </div> -->
+    </div>
+  </div>
 </div>
