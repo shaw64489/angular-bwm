@@ -1,52 +1,63 @@
-const rentals = [
-    {
-        _id: "ksdkdjoo",
-        city: "Raleigh",
-        title: "Very nice place",
-    },
-    {
-        _id: "129jsj92j",
-        city: "New York",
-        title: "Very nice city",
-    },
-]
-
+const Rental = require("../models/rental");
 
 exports.getRentals = (req, res) => {
+  Rental.find({}, (err, foundRentals) => {
+    if (err) {
+      return res.status(422).send({
+        errors: [
+          { title: "Rental Error!", message: "Cannot retrieve Rental data." },
+        ],
+      });
+    }
 
-    return res.json(rentals)
-}
+    return res.json(foundRentals);
+  });
+};
 
 exports.getRentalById = (req, res) => {
-    const { rentalId } = req.params;
-    const rental = rentals.find(r => r._id === rentalId);
+  const { rentalId } = req.params;
 
-    return res.json(rental)
-}
+  Rental.findById(rentalId, (err, foundRental) => {
+    if (err) {
+      return res.status(422).send({
+        errors: [
+          { title: "Rental Error!", message: "Cannot retrieve Rental data." },
+        ],
+      });
+    }
+    return res.json(foundRental);
+  });
+};
 
 exports.createRental = (req, res) => {
-    const rentalData = req.body;
-    rentals.push(rentalData);
-    return res.json({ message: `Rental with id ${rentalData._id} was added!` })
-}
+  const rentalData = req.body;
 
-exports.deleteRental = (req, res) => {
+  // const newRental = new Rental(rentalData);
 
-    const { rentalId } = req.params;
-    const rIndex = rentals.findIndex(r => r._id === rentalId);
-    rentals.splice(rIndex, 1);
+  // newRental.save((err, createdRental) => {
+  //   if (err) {
+  //     return res.status(422).send({
+  //       errors: [
+  //         { title: "Rental Error!", message: "Cannot create Rental data." },
+  //       ],
+  //     });
+  //   }
 
-    return res.json({ message: `Rental with id ${rentalId} was deleted!` })
-}
+  //   return res.json({
+  //     message: `Rental with id ${createdRental._id} was added!`,
+  //   });
+  // });
+  Rental.create(rentalData, (err, createdRental) => {
+    if (err) {
+      return res.status(422).send({
+        errors: [
+          { title: "Rental Error!", message: "Cannot create Rental data." },
+        ],
+      });
+    }
 
-exports.updateRental = (req, res) => {
-
-    const { rentalId } = req.params;
-    const rentalToUpdate = req.body;
-    const rIndex = rentals.findIndex(r => r._id === rentalId);
-
-    rentals[rIndex].title = rentalToUpdate.title;
-    rentals[rIndex].city = rentalToUpdate.city;
-
-    return res.json({ message: `Rental with id ${rentalId} was updated!` })
-}
+    return res.json({
+      message: `Rental with id ${createdRental._id} was added!`,
+    });
+  });
+};
