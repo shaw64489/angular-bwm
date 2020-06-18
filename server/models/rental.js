@@ -30,4 +30,6 @@ rentalSchema.statics.sendError = function (res, config) {
   });
 };
 
+//test
+
 module.exports = mongoose.model("Rental", rentalSchema);
