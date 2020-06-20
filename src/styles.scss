@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "bwm-colors";
+@import "forms";
 
 html,
 body {
@@ -25,10 +26,26 @@ p {
   &-apartment {
     color: #a72da3 !important;
   }
+
   &-condo {
     color: #d68000 !important;
   }
+
   &-house {
     color: #bf1818 !important;
+  }
+}
+
+.btn.bwm-btn-main {
+  border-color: $dark-red-color;
+  color: $dark-red-color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $dark-red-color;
+    border-color: $dark-red-color;
+    color: #ffffff;
+    box-shadow: none;
   }
 }

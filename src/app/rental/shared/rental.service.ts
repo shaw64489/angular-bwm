@@ -8,14 +8,12 @@ export class RentalService {
   constructor(private http: HttpClient) {}
 
   getRentalById(rentalId: string): Observable<Rental> {
-    return this.http.get<Rental>(
-      `http://localhost:4200/api/v1/rentals/${rentalId}`
-    );
+    return this.http.get<Rental>(`/api/v1/rentals/${rentalId}`);
   }
 
   //return Observable of type rental
   //Generic types <Rental[]>
   public getRentals(): Observable<Rental[]> {
-    return this.http.get<Rental[]>(`http://localhost:4200/api/v1/rentals`);
+    return this.http.get<Rental[]>(`/api/v1/rentals`);
   }
 }
