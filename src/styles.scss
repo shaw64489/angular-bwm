@@ -48,4 +48,10 @@ p {
     color: #ffffff;
     box-shadow: none;
   }
+
+  &:disabled {
+    cursor: auto;
+    color: $dark-red-color;
+    background: transparent;
+  }
 }
