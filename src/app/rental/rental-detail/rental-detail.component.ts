@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { RentalService } from "../shared/rental.service";
 import { Rental } from "../shared/rental.model";
 
+//Provider - the way this is defined means that the listing and detail page has a different RentalService
+
 @Component({
   selector: "bwm-rental-detail",
   templateUrl: "./rental-detail.component.html",

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Rental } from "../shared/rental.model";
 import { RentalService } from "../shared/rental.service";
 
+//Provider - the way this is defined means that the listing and detail page has a different RentalService
 @Component({
   selector: "bwm-rental-listing",
   templateUrl: "./rental-listing.component.html",
