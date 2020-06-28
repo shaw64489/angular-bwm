@@ -36,6 +36,7 @@
               #email="ngModel"
               required
               [pattern]="emailPattern"
+              forbiddenEmail="shaw64489@yahoo.com"
               name="email"
               type="email"
               class="form-control"
@@ -47,6 +48,9 @@
             >
               <div *ngIf="email.errors.required">
                 Email is required.
+              </div>
+              <div *ngIf="email.errors.forbiddenEmail">
+                Provided Email is forbidden.
               </div>
               <div *ngIf="email.errors.pattern">
                 Email format is not valid!
