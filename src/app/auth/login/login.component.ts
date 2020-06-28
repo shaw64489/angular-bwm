@@ -6,7 +6,10 @@ import {
   AbstractControl,
 } from "@angular/forms";
 
-import { forbiddenEmailValidator } from "../../shared/validators/functions";
+import {
+  forbiddenEmailValidator,
+  sameAsValidator,
+} from "../../shared/validators/functions";
 
 @Component({
   selector: "bwm-login",
